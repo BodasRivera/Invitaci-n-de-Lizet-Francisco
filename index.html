@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Bodas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <!-- Importa la fuente Antro Vectra -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/antro-vectra">
+</head>
+<body>
+
+<!-- Banner principal con video de fondo -->
+<div class="banner">
+    <video src="Imagenes\VIDE BODA LIZ Y FRAN.mp4" autoplay loop muted></video>
+    <div class="banner-content">
+        <img src="NUESTRA BODA/logo Blanco.png" alt="Logo" class="banner-logo">
+        <h1>¡Estás Invitado a Nuestra Boda!</h1>
+        <h1 class="names">Lizet & Francisco</h1>
+        <p>Fecha: 17 de Mayo de 2025</p>
+    </div>
+</div>
+
+    <!-- Sección del reproductor de música debajo del banner -->
+    <div class="music-section">
+        <h2>¡Disfruta nuestra música especial!</h2>
+        <div class="music-player">
+            <button id="play-pause-btn" onclick="togglePlay()">
+                <i class="fas fa-play"></i>
+            </button>
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="background-music" src="Imagenes/Matisse - Poco Tiempo.mp3"></audio>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeDisplay = document.getElementById('current-time');
+        const durationDisplay = document.getElementById('duration');
+        let isPlaying = false;
+
+        // Alternar reproducción / pausa
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Actualizar barra de progreso y tiempos
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+
+            // Actualizar barra de progreso
+            const progressPercent = (currentTime / duration) * 100;
+            progressBar.value = progressPercent;
+
+            // Actualizar tiempo actual
+            currentTimeDisplay.textContent = formatTime(currentTime);
+            // Actualizar duración
+            durationDisplay.textContent = formatTime(duration);
+        });
+
+        // Saltar a una parte de la canción al mover la barra de progreso
+        progressBar.addEventListener('input', () => {
+            const duration = audio.duration;
+            const seekTime = (progressBar.value / 100) * duration;
+            audio.currentTime = seekTime;
+        });
+
+        // Función para formatear el tiempo en minutos y segundos
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+    </script>
+</body>
+</html>
+
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Sección de cuenta regresiva -->
+        <div class="section">
+            <h2>Cuenta Regresiva</h2>
+            <div id="countdown" class="countdown">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <p>Días</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <p>Horas</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <p>Minutos</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <p>Segundos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sección de la cuenta regresiva
+            const countdownElement = document.getElementById('countdown');
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+    
+            // Fecha del evento
+            const weddingDate = new Date('2025-05-17T00:00:00').getTime();
+    
+            function launchFireworks() {
+                // Efecto de confeti
+                confetti({
+                    particleCount: 150,
+                    spread: 50,
+                    origin: { y: 0.6 }
+                });
+                // Lanza más confeti cada segundo durante 5 segundos
+                const intervalId = setInterval(function () {
+                    confetti({
+                        particleCount: 100,
+                        spread: 50,
+                        origin: { y: 0.6 }
+                    });
+                }, 120000);
+    
+                setTimeout(function () {
+                    clearInterval(intervalId);
+                }, 2000);
+    
+                // Animación de pirotecnia (añade aquí tu lógica de cohetes si lo deseas)
+                const fireworksContainer = document.createElement('div');
+                fireworksContainer.id = 'fireworks';
+                fireworksContainer.style.position = 'fixed';
+                fireworksContainer.style.top = 0;
+                fireworksContainer.style.left = 0;
+                fireworksContainer.style.width = '100vw';
+                fireworksContainer.style.height = '100vh';
+                fireworksContainer.style.pointerEvents = 'none'; // para que no bloquee clics
+    
+                document.body.appendChild(fireworksContainer);
+    
+                // Simulación de cohetes con CSS (puedes mejorar esto con animaciones personalizadas)
+                fireworksContainer.innerHTML = `
+                    <div class="rocket"></div>
+                    <div class="rocket"></div>
+                    <div class="rocket"></div>
+                `;
+    
+                setTimeout(() => fireworksContainer.remove(), 5000); // Elimina después de 5 segundos
+            }
+    
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+    
+                if (distance >= 0) {
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                    daysElement.textContent = days;
+                    hoursElement.textContent = hours;
+                    minutesElement.textContent = minutes;
+                    secondsElement.textContent = seconds;
+                } else {
+                    countdownElement.innerHTML = "¡¡El Gran Momento ha llegado!!";
+                    launchFireworks(); // Lanza los efectos de celebración
+                }
+            }
+    
+            // Actualiza la cuenta regresiva cada segundo
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+<!-- Imagen que simula una foto -->
+<head>
+    <h2>Momentos Inolvidables</h2>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrusel 3D</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Fotos</title>
+    <link rel="stylesheet" href="Fototeca.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fototeca</title>
+        <link rel="stylesheet" href="styles.css"> <!-- Archivo CSS externo -->
+    </head>
+    <body>
+    
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="photo-slide">
+                    <img src="Imagenes/Mi bb y yo.jpg" alt="Foto 1" class="wedding-photo">
+                </div>
+                <div class="photo-slide">
+                    <img src="Imagenes/Liz&Fran.jpg" alt="Foto 2" class="wedding-photo">
+                </div>
+                <div class="photo-slide">
+                    <img src="Imagenes/Liz bb.jpg" alt="Foto 3" class="wedding-photo">
+                </div>
+                <div class="photo-slide">
+                    <img src="Imagenes/Manods bb.jpg" alt="Foto 4" class="wedding-photo">
+                </div>
+            </div>
+            
+            <!-- Botones de navegación -->
+            <button class="carousel-button left">◀</button>
+            <button class="carousel-button right">▶</button>
+        </div>
+    
+        <script src="Fototeca.js" defer></script> <!-- Carga el JS de forma diferida -->
+    </body>
+</html>
+    <!-- Cita bíblica -->
+<div class="quote-section">
+    <p>
+      "Yo estoy contigo. Te protegeré por dondequiera que vayas y te traeré de vuelta a esta tierra. No te abandonaré hasta cumplir con todo lo que te he prometido." 
+      <br><strong>Génesis</strong> <span class="verse-numbers">28:15 NVI</span>
+    </p>
+  </div>
+  
+        <!-- Programa de la boda -->
+<!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Estilos personalizados -->
+<link rel="stylesheet" href="estilos.css">
+
+<title>Programa de la Boda</title>
+</head>
+<body>
+<!-- Programa de la boda -->
+<div class="section">
+    <h2 data-aos="fade-up">Programa de la boda</h2>
+    <img src="Iconos/Infinito con Corazon.svg" alt="Logo" class="banner-logo" data-aos="fade-down">
+    <div class="itinerary">
+        <ul>
+            <li data-aos="fade-right">
+                <div class="left-content">
+                    <img src="Iconos/Anillos.svg" alt="Ceremonia Icono">
+                    <strong>"El Gran Día" Boda Civil</strong>
+                </div>
+                <div class="right-content">
+                    <span>Viernes 16/05/25 - 12:00 pm</span><br>
+                    <span>Registro Civil Coatzacoalcos</span>
+                </div>
+            </li>
+            <li data-aos="fade-left">
+                <div class="left-content">
+                    <img src="Iconos/Templo.svg" alt="Recepción Icono">
+                    <strong>Discurso Ceremonial</strong>
+                </div>
+                <div class="right-content">
+                    <span>06:20</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-right">
+                <div class="left-content">
+                    <img src="Iconos/Camara.svg" alt="Fotos Icono">
+                    <strong>"Dinamica para Fotos"</strong>
+                </div>
+                <div class="right-content">
+                    <span>06:35 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-left">
+                <div class="left-content">
+                    <img src="Iconos/Copas Brindemos.svg" alt="Ceremonia Icono">
+                    <strong>Brindis</strong>
+                </div>
+                <div class="right-content">
+                    <span>06:50 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-right">
+                <div class="left-content">
+                    <img src="Iconos/Musica Tonos.svg" alt="Ceremonia Icono">
+                    <strong>Baile de los Novios y Baile Fam</strong>
+                </div>
+                <div class="right-content">
+                    <span>07:00 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-left">
+                <div class="left-content">
+                    <img src="Iconos/Platillo.svg" alt="Ceremonia Icono">
+                    <strong>Cena ¡¡Buen Provecho!!</strong>
+                </div>
+                <div class="right-content">
+                    <span>07:15 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-right">
+                <div class="left-content">
+                    <img src="Iconos/Ramo.svg" alt="Ceremonia Icono">
+                    <strong>"Yo Quiero" Tiro del Ramo (Vibora de la mar)</strong>
+                </div>
+                <div class="right-content">
+                    <span>07:35 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-left">
+                <div class="left-content">
+                    <img src="Iconos/Pastel.svg" alt="Ceremonia Icono">
+                    <strong>Pastel y Mesa de Dulces</strong>
+                </div>
+                <div class="right-content">
+                    <span>08:15 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+            <li data-aos="fade-right">
+                <div class="left-content">
+                    <img src="Iconos/Regalo.svg" alt="Ceremonia Icono">
+                    <strong>Entrega de Regalos</strong>
+                </div>
+                <div class="right-content">
+                    <span>08:25 pm</span><br>
+                    <span>Salón de Eventos "Majesty"</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <img src="Iconos/Corazon infiito Abajo.svg" alt="Logo" class="banner-logo" data-aos="fade-up">
+</div>
+
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+
+        <!-- Código de vestimenta -->
+<div class="section dress-code">
+    <h3>Vestimenta: <span class="formal"> Formal</span></h3> <!-- Aplica la clase "formal" a la palabra Formal -->
+    <div class="dress-code-container">
+        <img src="Imagenes/VESTIDO MUJER.svg" alt="Dress Code Mujer" class="dress-icon">
+        <img src="Imagenes/TRAJE HOMBRE.svg" alt="Dress Code Hombre" class="dress-icon">
+    </div>
+    <div class="color-palette">
+        <div style="background-color: #861816;"></div>
+        <div style="background-color: #b81c20;"></div>
+        <div style="background-color: #fdeaed;"></div>
+        <div style="background-color: #fcf2d7;"></div>
+        <div style="background-color: #bf920a;"></div>
+    </div>
+</div>
+       <!-- Numero de Targeta Bancaria -->
+ <!-- Tarjeta Bancaria -->
+ <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tarjeta Bancaria BBVA</title>
+        <link rel="stylesheet" href="Tarjeta.css">
+
+   <!-- Tarjeta Bancaria -->
+<li class="agradecimiento">
+    "Queremos agradecerte por ser parte de nuestro día. Si estás pensando en darnos un regalo, una contribución monetaria sería enormemente apreciada para ayudarnos a comenzar nuestra vida juntos."
+  </li>  
+  <div class="card-container">
+    <div class="card">
+      <div class="card-logo">BBVA</div>
+      <!-- Reemplazo del chip CSS por SVG inline -->
+      <div class="chip-svg">
+        <svg xmlns="Iconos\Chip BBVA.svg" viewBox="0 0 64 48">
+          <rect x="2" y="2" width="60" height="44" rx="8" fill="silver"/>
+        </svg>
+      </div>
+      <div class="contactless"></div>
+      <div class="card-number">4152 3144 1050 6979</div>
+      <div class="card-holder">LIZET & FRANCISCO</div>
+      <div class="expiry"></div>
+      <div class="visa-logo">VISA</div>
+    </div>
+  </div>
+  <li>Concepto: <strong>BodaLyF</strong></li>
+
+<!--Mesa de Regalos-->
+  <style>
+    .gift-section {
+      text-align: center;
+      padding: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .gift-icon {
+      font-size: 50px;
+      display: inline-block;
+      animation: bounce 1s infinite;
+    }
+  
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  
+    .gift-button {
+      display: inline-block;
+      background-color: #d81b60; /* Color de Liverpool */
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  
+    .gift-button:hover {
+      background-color: #b71550;
+    }
+  </style>
+  
+  <div class="gift-section">
+    <div class="gift-icon">🎁</div>
+    <h2>Nuestra Mesa de Regalos</h2>
+    <p>Encuentra un detalle especial para nosotros en Liverpool.</p>
+    <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51640625" class="gift-button" target="_blank">Ver Mesa de Regalos</a>
+  </div>
+  
+        <!-- Confirmar asistencia (RSVP) -->
+<div class="section rsvp">
+    <h2>Confirmar Asistencia</h2>
+    <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSevSoy1GNOrhIj8HXBt-h53RoC29XLweCDSmGpKvu-j3UqLcQ/formResponse" method="POST" target="_blank">
+        <!-- Confirmación de asistencia -->
+        <label for="attendance">Confirmación de asistencia a la boda</label>
+        <select id="attendance" name="entry.1166974658" required>
+            <option value="">¿Asistirás?</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <!-- Nombre del invitado -->
+        <label for="name">Nombre del invitado</label>
+        <input type="text" id="name" name="entry.2005620554" placeholder="Nombre Completo" required>
+
+        <!-- Invitados de la: Novia o Novio -->
+        <label for="side">Lado del invitado</label>
+        <select id="side" name="entry.1234567890" required> <!-- Ajusta este ID por el correcto -->
+            <option value="">¿De parte de quién vienes?</option>
+            <option value="Novia">Novia</option>
+            <option value="Novio">Novio</option>
+        </select>
+
+        <!-- Número de personas -->
+        <div id="guest-container" style="display: none;">
+            <label for="guest-count">Número de personas</label>
+            <input type="number" id="guest-count" name="entry.839337160" placeholder="Número de Acompañantes">
+
+            <label for="guest-names">Nombres de los acompañantes</label>
+            <textarea id="guest-names" name="entry.1254234743" placeholder="Nombres de los Acompañantes"></textarea>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const attendanceSelect = document.getElementById('attendance');
+        const guestContainer = document.getElementById('guest-container');
+
+        attendanceSelect.addEventListener('change', function() {
+            if (attendanceSelect.value === 'Sí') {
+                guestContainer.style.display = 'block';
+            } else {
+                guestContainer.style.display = 'none';
+            }
+        });
+    });
+</script>
+<!-- Ubicación de la boda -->
+<div class="section location">
+    <a href="https://www.google.com/maps/place/Majesty/@18.1372702,-94.4562353,18z/data=!4m6!3m5!1s0x85e983a0c3eee04d:0x1c41cf07cd86ca7f!8m2!3d18.137181!4d-94.45498!16s%2Fg%2F11b6vjzxs9?entry=ttu&g_ep=EgoyMDI1MDExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+        <img src="Iconos/Corazon Localizador.svg" alt="Logo" class="banner-logo">
+    </a>
+    <h2>Salón de Eventos Majesty</h2>
+    <h3><a href="https://www.google.com/maps/place/Majesty/@18.1372702,-94.4562353,18z/data=!4m6!3m5!1s0x85e983a0c3eee04d:0x1c41cf07cd86ca7f!8m2!3d18.137181!4d-94.45498!16s%2Fg%2F11b6vjzxs9?entry=ttu&g_ep=EgoyMDI1MDExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+        Av Juan Escutia 2124, 20 de Noviembre, 96570 Coatzacoalcos, Ver.
+    </a></h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1895.7889850479396!2d-94.45623527378343!3d18.137270212895615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e983a0c3eee04d%3A0x1c41cf07cd86ca7f!2sMajesty!5e0!3m2!1ses-419!2smx!4v1737073789564!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</body>
+
+<!-- Sección de Tips y Notas -->
+<div class="section tips-notes">
+    <div class="pinned-note">
+        <h2>Tips y Notas</h2>
+    </div>
+    <ul>
+        <li><strong>La celebración</strong> comenzará puntualmente a las 6:00 horas.</li>
+        <li><strong>Estacionamiento:</strong> "No habrá estacionamiento disponible en el lugar del evento", pero puedes optar por estacionarte en lugares cercanos.</li>
+        <li><strong>Clima:</strong> El salón cuenta con área climatizada, te recomendamos traer un abrigo.</li>
+        <li><strong>Fotos:</strong> En nuestras mesas tendrán un QR donde podrán compartir y subir fotos de la boda, <strong>Álbum Fotográfico Boda, </strong> en nuestra nube.</li>
+        <li><strong>Confirmación de asistencia:</strong> Si aún no has confirmado tu asistencia, por favor hazlo lo antes posible.</li>
+    </ul>
+</div>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos de la Boda</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace a FontAwesome para los íconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="qr-section">
+            <h2>iSube tus Mejores Fotos!</h2>
+        <p>Escanea el código QR y comparte tus fotos de la Boda con nosotros.</p>
+        <!-- Ícono de cámara con animación -->
+        <div class="camera-container">
+            <i class="fas fa-camera camera-icon"></i>
+        </div>
+        <!-- Hipervínculo del QR -->
+        <a href="https://photos.app.goo.gl/GSRoE5S6kYLo3s558" target="_blank">
+            <img src="Imagenes/bb 2.png" alt="Código QR para subir fotos" class="qr-code">
+        </a>
+    </div>
+        <p>Todos los Derechos Reservados a la Boda de "Lizet Rivera & José Francisco"</p>
+</body>
+</html>
+
+

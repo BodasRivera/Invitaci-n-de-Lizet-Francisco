@@ -1,0 +1,247 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9; /* Color del fondo del programa de la boda */
+    font-family: 'Montserrat', sans-serif; /* Tipografía de boda */
+    color: #1b3231;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 35vh;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.container::after {
+    content: "";
+    width: 2px;
+    height: 100%;
+    background: #1b3231;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    z-index: 1;
+}
+
+/* Estilos del itinerario */
+.itinerary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.itinerary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+
+.itinerary li {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    position: relative;
+    font-family: 'Dancing Script', cursive; /* Fuente del programa de la boda */
+}
+
+.left-content, .right-content {
+    display: inline-block;
+    width: 45%;
+}
+
+.left-content {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.left-content img {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.right-content {
+    text-align: left;
+    margin-left: 20px;
+}
+
+/* Línea vertical de la timeline */
+.progress-container {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: #f3f3f3;
+    z-index: 100;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0;
+    background-color: #ff5757;
+    transition: height 0.25s ease-out;
+}
+
+/* Corazones en la timeline */
+.itinerary li::before {
+    content: '\2665'; /* Corazón */
+    position: absolute;
+    left: calc(50% - 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 46px;
+    color: #ff5757;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.itinerary li[data-aos="fade-up"]::before {
+    box-shadow: 0 0 15px rgb(255, 4, 109), 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* Estilos de las fotos y eventos */
+.evento {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 200px;
+    position: relative;
+}
+
+.evento::after {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    background: #DCDFD9;
+    border: 2px solid #1b3231;
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 9px);
+    left: calc(50% - 9px);
+}
+
+.foto {
+    width: 42%;
+    border: 10px solid #fff;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.foto::after {
+    content: "";
+    display: block;
+    border: 20px solid transparent;
+    border-left: 20px solid #fff;
+    position: absolute;
+    right: -50px;
+    top: calc(50% - 20px);
+}
+
+.foto img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.evento:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.evento:nth-child(even) .fecha {
+    justify-content: end;
+}
+
+.evento:nth-child(even) .foto::after {
+    content: "";
+    border: 20px solid transparent;
+    border-right: 20px solid #fff;
+    right: initial;
+    left: -50px;
+}
+
+.fecha {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: calc(42% + 20px);
+    font-size: 32px;
+    font-weight: normal;
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .hero {
+        font-size: 24px; /* Reduce el tamaño del texto */
+    }
+
+    .itinerary li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-content, .right-content {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .left-content img, .right-content img {
+        width: 40px;
+        height: 40px; /* Reduce el tamaño de las imágenes */
+    }
+
+    .container::after {
+        display: none; /* Oculta la línea central */
+    }
+
+    .progress-container {
+        display: none; /* Oculta la barra de progreso */
+    }
+
+    .evento {
+        flex-direction: column;
+    }
+
+    .evento::after {
+        display: none; /* Oculta el círculo en la timeline */
+    }
+
+    .foto {
+        width: 90%;
+    }
+
+    .fecha {
+        font-size: 24px; /* Reduce el tamaño de las fechas */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .foto::after {
+        display: none; /* Oculta la flecha en las fotos */
+    }
+}

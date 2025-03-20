@@ -1,0 +1,148 @@
+/* Quita los márgenes y padding del body */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor que centra la tarjeta */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90%;
+    background: none;
+}
+
+/* Tarjeta (dimensiones base para escritorio) */
+.card {
+    width: 325px;
+    height: 200px;
+    background: linear-gradient(135deg, #0097a7, #00cce7);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    position: relative;
+    font-family: Arial, sans-serif;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Animación: Efecto de flotación */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Elementos internos de la tarjeta */
+.card-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.chip-svg {
+    position: absolute;
+    top: 95px;
+    left: 20px;
+    width: 40px;
+    height: 30px;
+}
+
+.chip-svg svg {
+    width: 100%;
+    height: 100%;
+}
+
+.contactless {
+    width: 20px;
+    height: 20px;
+    background: url('https://example.com/contactless-icon.png') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 115px;
+    left: 70px;
+}
+.card-number {
+    font-size: 21px;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 90px;
+}
+.card-holder {
+    font-size: 16px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+}
+.expiry {
+    font-size: 16px;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+}
+.visa-logo {
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+/* Estilo para la lista de agradecimiento */
+.agradecimiento {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    list-style: none;
+    position: relative;
+}
+
+/* Pseudo-elementos para agregar palomas animadas */
+.agradecimiento::before,
+.agradecimiento::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/White_dove.svg/120px-White_dove.svg.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.7;
+    animation: fly 5s linear infinite;
+}
+.agradecimiento::before {
+    top: -25px;
+    left: -25px;
+}
+.agradecimiento::after {
+    bottom: -25px;
+    right: -25px;
+    animation-delay: 2.5s;
+}
+
+/* Animación de vuelo para las palomas */
+@keyframes fly {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(15px, 15px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Media Query para dispositivos móviles:
+   En lugar de modificar directamente width/height (lo que encogería la tarjeta y aplastaría su contenido),
+   aplicamos un escalado proporcional mediante transform: scale(). */
+@media (max-width: 480px) {
+    .card {
+        /* Calcula el factor de escala para que la tarjeta se ajuste al ancho del viewport.
+           Por ejemplo, si queremos que la tarjeta base (400px) se vea al 90% del ancho de la pantalla: */
+        transform: scale(0.9);
+        transform-origin: center center;
+    }
+}

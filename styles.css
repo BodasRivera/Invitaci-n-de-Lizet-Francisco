@@ -1,0 +1,945 @@
+/* Estilos generales */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Banner */
+/* Estilos generales */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Banner */
+/* Estilos generales */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    height: 400px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Contenedor del banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la pantalla */
+    overflow: hidden; /* Evita desbordamientos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video centrado y adaptado */
+.banner video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo sin distorsión */
+    transform: translate(-50%, -50%); /* Centra el video */
+    opacity: 0.7; /* Ajusta la transparencia si es necesario */
+}
+
+/* Contenedor del logo */
+.logo-container {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste fino */
+    z-index: 2; /* Asegura que el logo esté sobre el video */
+    text-align: center;
+}
+
+/* Estilo del logo */
+.logo-container img {
+    width: 200px; /* Ajusta el tamaño según necesidad */
+    max-width: 50vw; /* Controla tamaño en pantallas pequeñas */
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5)); /* Sombra para mejor visibilidad */
+}
+
+/* 📱 Ajustes para móviles */
+@media screen and (max-width: 768px) {
+    .banner {
+        height: 80vh; /* Reduce la altura en móviles */
+    }
+
+    .logo-container img {
+        width: 150px; /* Reduce el tamaño del logo en móviles */
+    }
+}
+
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.banner-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.names {
+    font-family: 'Antro Vectra', sans-serif;
+    font-size: 3em;
+    margin: 10px 0;
+}
+
+.banner .date {
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 10px;
+}
+/* Estilos para la sección de música */
+.music-section {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e3e3e3);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.music-section h2 {
+    font-family: 'Antro Vectra', sans-serif;
+    font-size: 22px; /* Tamaño moderado para más elegancia */
+    margin-bottom: 20px;
+    color: #333; /* Color más sofisticado */
+}
+
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-player:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#play-pause-btn {
+    background-color: #681818;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#play-pause-btn:hover {
+    background-color: #1f1e1e;
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+#progress-bar {
+    width: 180px;
+    height: 6px;
+    background-color: #442c2c;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#progress-bar::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background-color: #312f30;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+#current-time, #duration {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Adaptación para móviles */
+@media screen and (max-width: 600px) {
+    .music-section {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .music-section h2 {
+        font-size: 18px; /* Reducir tamaño de título en móvil */
+        margin-bottom: 15px;
+    }
+
+    .music-player {
+        flex-direction: column; /* Organiza los elementos en columna */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #play-pause-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #progress-bar {
+        width: 140px;
+        height: 5px;
+    }
+}
+
+
+/* Secciones */
+.section {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2em;
+    font-family: 'Antro Vectra', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor de la foto */
+.photo-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Estilos para la imagen tipo foto */
+.wedding-photo {
+    width: 80%; /* Ajusta el tamaño según tu necesidad */
+    max-width: 600px; /* Máximo tamaño */
+    border: 5px solid #fff; /* Borde blanco para parecer foto */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3); /* Sombra para dar el efecto de elevación */
+    border-radius: 10px; /* Bordes ligeramente redondeados */
+    transition: transform 0.3s ease; /* Animación suave al hacer hover */
+}
+
+.wedding-photo:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+/* Fuente Great Vibes para la cita bíblica */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500&display=swap');
+
+/* Cita bíblica */
+.quote-section {
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+        url('Iconos/Ramo tulipanes.png.svg'); /* Ruta de la imagen */
+    background-size: 80% 80%; /* O usa contain o dimensiones personalizadas */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fbffe6;
+    padding: 20px;
+    color: rgb(68, 63, 63); /* Ajusta el color del texto según sea necesario */
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1em;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quote-section p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5em;
+    font-style: italic;
+    line-height: 1.5em;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.verse-numbers {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 0.75em;
+    color: #17191a;
+}
+
+.quote-section p strong {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+/* Si la fuente falla, usar una fuente predeterminada */
+.quote-section p {
+    font-family: 'Radiantly Signature', cursive, sans-serif;
+}
+
+/* Cuenta regresiva */
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.time-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100px;
+}
+
+.time-box span {
+    font-size: 2.5em;
+    color: #333;
+    display: block;
+    font-family: 'Times New Roman', Times, serif; /* Aplicar Times New Roman */
+}
+
+.time-box p {
+    margin: 0;
+    color: #555;
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .time-box {
+        width: 80px; /* Ajustar el ancho de los cuadros */
+        padding: 15px; /* Reducir padding */
+    }
+
+    .time-box span {
+        font-size: 2em; /* Reducir tamaño de fuente */
+    }
+
+    .time-box p {
+        font-size: 0.9em; /* Ajustar el tamaño de la descripción */
+    }
+}
+
+/* Itinerario */
+.itinerary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.itinerary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+
+.itinerary li {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Contenidos izquierdo y derecho para pantallas amplias */
+.left-content, .right-content {
+    display: inline-block;
+    width: 45%;
+}
+
+.left-content {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.left-content img {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.right-content {
+    text-align: left;
+    margin-left: 20px;
+}
+
+/* Línea vertical de la timeline */
+.itinerary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    background-color: #ccc;
+    z-index: 0;
+}
+
+/* Corazones grandes y cerca de la línea */
+.itinerary li::before {
+    content: '\2665';
+    position: absolute;
+    left: calc(50% - 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 46px;
+    color: #ff5757;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación de brillo para los corazones */
+.itinerary li[data-aos="fade-up"]::before {
+    box-shadow: 0 0 15px rgb(255, 4, 109), 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* Cambios para pantallas pequeñas (móviles) */
+@media screen and (max-width: 600px) {
+    /* Ajusta el ancho del contenedor de la lista */
+    .itinerary ul {
+        width: 95%;
+    }
+    
+    /* Organiza cada ítem en columna y centra el contenido */
+    .itinerary li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+        position: relative;
+        padding-top: 30px; /* Espacio para el corazón */
+    }
+    
+    /* Hace que los bloques izquierdo y derecho ocupen todo el ancho */
+    .left-content, 
+    .right-content {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
+    }
+    
+    /* Ajusta el tamaño y margen del ícono (imagen o SVG) */
+    .left-content img {
+        width: 40px;
+        height: 40px;
+        margin: 10px auto;
+        display: block;
+    }
+    
+    /* Oculta la línea vertical en móviles */
+    .itinerary::before {
+        display: none;
+    }
+    
+    /* Reposiciona el corazón para separarlo del texto */
+    .itinerary li::before {
+        font-size: 24px;
+        left: 50%;
+        top: 0; /* Ubicado en la parte superior del li */
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* Código de vestimenta */
+/* Importa la fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Contenedor de código de vestimenta */
+.dress-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif; /* Mantiene Montserrat para el resto */
+    font-weight: 300; /* Fuente delgada */
+}
+
+/* Línea separadora */
+.dress-code-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #ccc;
+}
+
+/* Iconos de vestimenta */
+.dress-icon {
+    width: 200px; /* Tamaño del icono de vestimenta */
+    height: 200px; /* Tamaño del icono de vestimenta */
+    stroke: #000; /* Color del contorno */
+    stroke-width: 2px; /* Grosor del contorno */
+    fill: none; /* Asegúrate de que no tenga fondo */
+}
+
+.dress-icon:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+/* Paleta de colores para vestimenta */
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif; /* Mantiene Montserrat */
+    font-weight: 300; /* Fuente delgada */
+}
+
+.color-palette div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la palabra "formal" */
+.formal {
+    font-family: 'Roboto', sans-serif; /* Aplica Roboto solo a "formal" */
+    font-weight: 400; /* Fuente regular de Roboto */
+    font-size: 1em; /* Ajusta el tamaño para resaltar */
+}
+
+/* Confirmar asistencia */
+.rsvp form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.rsvp input, .rsvp select, .rsvp textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.rsvp button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.rsvp button:hover {
+    background-color: #555;
+}
+
+/* Ubicación */
+.location {
+    background-color: #f3f3f3;  /* Color de fondo sutil */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;  /* Centrar el contenido */
+}
+
+.location h3 {
+    font-size: 1em;  /* Tamaño más pequeño para la dirección */
+    color: #777;     /* Color gris más suave */
+    margin-bottom: 10px;
+    line-height: 1.5em;
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna */
+}
+
+.location h3 a {
+    color: #777;  /* Mantener el color gris suave para el enlace */
+    text-decoration: none;  /* Sin subrayado */
+    font-weight: 500;  /* Un poco más de peso para el enlace */
+}
+
+.location h3 a:hover {
+    color: #ff5757;  /* Color al pasar el ratón */
+}
+
+.location h2 {
+    font-size: 1.8em;   /* Tamaño del nombre del lugar */
+    color: #333;        /* Color oscuro elegante */
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna */
+}
+
+.location .banner-logo {
+    width: 100px;       /* Ajusta el tamaño del ícono */
+    margin-bottom: 15px;
+}
+
+/* Google Maps iframe */
+.location iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+}
+/* Sección de Tips y Notas */
+.tips-notes {
+    background-color: #ffffe7;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 1500px; /* Limitar el ancho */
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto', sans-serif; /* Cambiar a fuente delgada y fina */
+    font-weight: 300; /* Usar una versión más delgada de la fuente */
+    font-size: 1.1rem; /* Tamaño de letra más fino */
+    color: #4a4a4a; /* Cambiar a un color de texto más suave */
+}
+
+.pinned-note {
+    position: relative;
+    display: inline-block;
+    background-color: #fffacd; /* color similar a papel */
+    padding: 15px 30px;
+    margin: 0 auto 20px;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Antro Vectra', sans-serif; /* Mantener la fuente cursiva */
+    text-align: center;
+    font-size: 1rem;
+    color: #6a5acd;
+    width: 100%; /* Hacer la nota cuadrada */
+    max-width: 300px;
+    box-sizing: border-box; /* Asegurar que el padding esté dentro del ancho */
+}
+
+/* Alfiler en forma de corazón */
+.pinned-note::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    background-color: #ff4b4b; /* color del corazón */
+    clip-path: polygon(50% 0%, 100% 38%, 79% 100%, 50% 79%, 21% 100%, 0% 38%); /* Forma de corazón */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.pinned-note::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 10px;
+    background-color: #999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la lista de Tips */
+.tips-notes ul {
+    list-style: none; /* Sin viñetas predeterminadas */
+    padding-left: 0;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    column-count: 2; /* Dividir en dos columnas */
+    column-gap: 40px; /* Espacio entre columnas */
+}
+
+.tips-notes li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px; /* Espacio para el ícono de corazón */
+    break-inside: avoid; /* Evitar romper el contenido entre columnas */
+}
+
+.tips-notes li::before {
+    content: "♥"; /* Símbolo de corazón */
+    color: #ff4b4b; /* Color rojo para el corazón */
+    font-size: 1.2rem; /* Tamaño del corazón */
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(25%); /* Alinear el corazón verticalmente */
+}
+
+.tips-notes strong {
+    color: #bf920a;
+}
+
+/* Media queries para pantallas móviles */
+@media (max-width: 768px) {
+    .tips-notes {
+        font-size: 0.9rem; /* Tamaño de letra más pequeño en móviles */
+        max-width: 100%; /* Hacer que la sección ocupe el 100% del ancho de la pantalla */
+        padding: 15px; /* Ajustar el padding para dispositivos móviles */
+    }
+
+    .pinned-note {
+        max-width: 90%; /* Ajustar el ancho de la nota en móviles */
+        font-size: 0.9rem; /* Reducir el tamaño de letra de la nota */
+        padding: 10px 20px; /* Ajustar padding para móviles */
+    }
+
+    /* Cambia a una sola columna en pantallas más pequeñas */
+    .tips-notes ul {
+        column-count: 1;
+        text-align: center; /* Cambiar a centrado en móviles */
+    }
+
+    /* Ajustar el tamaño del texto en los elementos de la lista */
+    .tips-notes li {
+        font-size: 1rem; /* Tamaño de letra más pequeño en móviles */
+        padding-left: 25px; /* Ajustar espacio para ícono en móviles */
+    }
+
+    /* Ajustar el tamaño del corazón en móviles */
+    .tips-notes li::before {
+        font-size: 1rem; /* Tamaño del corazón más pequeño en móviles */
+    }
+}
+/* Sección del QR */
+.qr-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.qr-section img.qr-code {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qr-section img.qr-code:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del QR al pasar el cursor */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+}
+
+.qr-section h2 {
+    font-family: 'Antro Vectra', sans-serif;
+    font-size: 24px;
+    color: #333;
+}
+
+.qr-section p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Contenedor para centrar el ícono de la cámara */
+.camera-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Ícono de la cámara */
+.camera-icon {
+    font-size: 40px;
+    color: #861817;
+    margin-bottom: 10px;
+    animation: bounce 1.5s infinite;
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive para pantallas pequeñas (móviles) */
+@media screen and (max-width: 600px) {
+    .qr-section img.qr-code {
+        width: 150px; /* Redimensiona el código QR en pantallas pequeñas */
+    }
+    
+    .camera-icon {
+        font-size: 30px; /* Redimensiona el ícono de la cámara en pantallas pequeñas */
+    }
+    
+    .qr-section h2 {
+        font-size: 20px; /* Ajusta el tamaño del título en pantallas pequeñas */
+    }
+
+    .qr-section p {
+        font-size: 16px; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+/* Ajustes adicionales para pantallas aún más pequeñas */
+@media screen and (max-width: 400px) {
+    .qr-section img.qr-code {
+        width: 120px; /* Redimensiona aún más el código QR para pantallas muy pequeñas */
+    }
+
+    .camera-icon {
+        font-size: 25px; /* Redimensiona más el ícono de la cámara */
+    }
+}
+
+/*En Este aparatado solo se modifican dimenciones para dispositivos moviles*/    
+
+/* Estilos generales para pantallas móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9em; /* Reducir ligeramente el tamaño de fuente */
+    }
+
+    .container {
+        padding: 10px; /* Reducir el padding */
+    }
+    /* Secciones */
+    .section {
+        margin: 10px 0;
+        padding: 15px;
+        box-shadow: none; /* Eliminar sombras en móviles */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Reducir tamaño de encabezados */
+    }
+
+    .quote-section {
+        padding: 15px; /* Reducir padding */
+        font-size: 0.9em; /* Reducir tamaño de fuente */
+    }
+
+    .quote-section p {
+        font-size: 1.2em; /* Ajustar tamaño de la cita bíblica */
+    }
+
+    /* Cuenta regresiva */
+    .countdown {
+        gap: 10px; /* Reducir espacio entre cajas de tiempo */
+    }
+
+    .time-box {
+        width: 60px; /* Reducir el ancho de las cajas de tiempo */
+        padding: 8px; /* Reducir el padding */
+    }
+
+    /* Confirmar asistencia */
+    .rsvp form {
+        max-width: 100%; /* Asegurar que el formulario ocupe todo el ancho */
+        padding: 0 10px; /* Ajustar padding en móviles */
+    }
+
+    /* Ubicación */
+    .location {
+        padding: 15px; /* Reducir padding */
+    }
+
+    .location h2 {
+        font-size: 1.4em; /* Reducir tamaño del título */
+    }
+
+    .location h3 {
+        font-size: 0.9em; /* Reducir tamaño de la dirección */
+    }
+
+    .location iframe {
+        height: 200px; /* Reducir altura del mapa */
+    }
+
+    /* Tips y notas */
+    .tips-notes {
+        padding: 15px; /* Reducir el padding en móviles */
+        max-width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .tips-notes ul {
+        column-count: 1; /* Cambia a una sola columna en pantallas pequeñas */
+    }
+
+    .pinned-note {
+        font-size: 0.9rem; /* Reducir el tamaño del texto */
+        max-width: 100%; /* Asegurarse que la nota ocupe todo el ancho */
+    }
+}
+
+
+
